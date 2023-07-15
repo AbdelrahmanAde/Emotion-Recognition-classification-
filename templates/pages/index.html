@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/static/css/main.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="flex">
+        <div class="Logo">
+          <h6>EMO REC</h6>
+        </div>
+        <ul class="flex">
+          <li><a href="#">Home</a></li>
+          <li><a href="#diagnose">Recognition </a></li>
+          <li><a href="#footer">Contact us</a></li>
+          <li><a href="#footer">About us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="main-section">
+        <div class="main-section-container">
+          <h2>Emotion Recognition</h2>
+        </div>
+      </section>
+      <section class="about">
+        <div class="about-container">
+          <h2>About Us</h2>
+          <p>
+            emotion recognition refers to the process of analyzing a person's
+            facial expression, body language, and other non-verbal cues to
+            identify the emotions they are experiencing. The aim of expression
+            to emotion recognition is to better understand human behavior and
+            improve communication and interaction between humans and machines
+          </p>
+        </div>
+      </section>
+      <section class="diagnose" id="diagnose">
+        <div class="diagnose-container">
+          <h2>Recognition</h2>
+          <p>Upload your Speech or Image and get your result</p>
+          <form
+            class="form-inline"
+            enctype="multipart/form-data"
+            action="/predict"
+            method="POST"
+          >
+            <label><b>Image: &nbsp;&nbsp; </b></label>
+            <input type="file" class="form-control" name="image" />
+            <button class="submit" type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        </div>
+        <div class="col-lg-6">
+          {% if results %}
+          <div class="col-sm-4">
+            <img
+              class="diagnose-container"
+              style="height: 15%; width: 15%"
+              src="{{results.image}}"
+            />
+          </div>
+          <div class="col-sm-8 diagnose-container">
+            <p class="text"><b> We think that is: </b></p>
+            <p style="color: red">{{results.prediction}}</p>
+          </div>
+          {% endif %}
+        </div>
+      </section>
+    </main>
+
+    <footer class="flex" id="footer">
+      <div class="footer-continer flex">
+        <div class="addresss">
+          <h6>EMO REC</h6>
+          <ul>
+            <li>Address:</li>
+            <li>Phone:</li>
+            <li>Email:</li>
+          </ul>
+        </div>
+        <div class="Our Services">
+          <h6>Our Services</h6>
+          <ul>
+            <li><a href="#">Recognition</a></li>
+            <li><a href="#">Advicing</a></li>
+            <li><a href="#">Following</a></li>
+          </ul>
+        </div>
+        <div class="contact">
+          <h6>Our Social Network</h6>
+          <p>
+            If you want to Contact ask and inquire about any services and help
+            please contact us
+          </p>
+          <div class="social-icons">
+            <ul class="flex">
+              <li><i class="fa-brands fa-facebook"></i></li>
+              <li><i class="fa-brands fa-twitter"></i></li>
+              <li><i class="fa-brands fa-instagram"></i></li>
+              <li><i class="fa-brands fa-linkedin"></i></li>
+              <li><i class="fa-brands fa-skype"></i></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copy-rights">
+        <p>&copy Copy rights, All reserved 2023</p>
+      </div>
+    </footer>
+    <script src="font-aws/all.min.js"></script>
+  </body>
+</html>
